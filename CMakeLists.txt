@@ -6,7 +6,9 @@ set(CMAKE_CXX_STANDARD 14)
 
 set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/release_package)
 
-set(BUILD_RELEASE OFF)
+set(BUILD_RELEASE ON)
+
+set(MAKE_COMMAND "mingw32-make")
 
 if(${BUILD_RELEASE})
 
@@ -33,6 +35,12 @@ add_executable(sofruner
     ${PROJECT_SOURCE_DIR}/main.cpp
 )
 
+add_custom_command(
+    TARGET     sofruner
+    POST_BUILD
+    COMMAND    ${MAKE_COMMAND} -C ${PROJECT_SOURCE_DIR}/py
+)
+
 target_link_libraries(sofruner
     ${Python3_LIBRARIES}
 )
@@ -40,7 +48,39 @@ target_link_libraries(sofruner
 if(${BUILD_RELEASE})
 
     install(
-        
+        FILES
+            ${PROJECT_SOURCE_DIR}/release/sofruner.exe
+            ${Python3_RUNTIME_LIBRARY_DIRS}/python310.dll
+        DESTINATION
+            ${CMAKE_INSTALL_PREFIX}/bin
     )
+    # install bins
+
+    install(
+        FILES
+            ${PROJECT_SOURCE_DIR}/py/sofruner.pyc
+        DESTINATION
+            ${CMAKE_INSTALL_PREFIX}/py
+    )
+    # install py modules
+
+    install(
+        FILES
+            ${PROJECT_SOURCE_DIR}/config/config.ini
+            ${PROJECT_SOURCE_DIR}/config/icon.gif
+        DESTINATION
+            ${CMAKE_INSTALL_PREFIX}/config
+    )
+    # install config files
+
+    install(
+        FILES
+            ${PROJECT_SOURCE_DIR}/LICENSE
+            ${PROJECT_SOURCE_DIR}/start_gui_with_python.bat
+            ${PROJECT_SOURCE_DIR}/start_gui_with_python.vbs
+        DESTINATION
+            ${CMAKE_INSTALL_PREFIX}
+    )
+    # install other things
 
 endif()
