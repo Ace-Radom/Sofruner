@@ -20,8 +20,8 @@ build:
 	@copy __pycache__\sofruner.${PYTHON_EDITION}.${PYTHON_COMPILED_FILE_FE} sofruner.${PYTHON_COMPILED_FILE_FE}
 
 clean:
-	rmdir /s /q __pycache__
-	del /q *.${PYTHON_COMPILED_FILE_FE}
+	@rmdir /s /q __pycache__
+	@del /q *.${PYTHON_COMPILED_FILE_FE}
 
 help:
 	@echo The following are the valid targets for this Makefile:
