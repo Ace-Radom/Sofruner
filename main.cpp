@@ -1,5 +1,6 @@
 #include<Python.h>
 #include<windows.h>
+#include"find_process.h"
 
 #define PyModule_AppendPath( path )                             \
 {                                                               \
@@ -41,6 +42,21 @@ int main( int argc , char** argv ){
         return -1;
     }
 
+    int pcount = find_process( "sofruner.exe" );
+    if ( pcount == FP_HANDLECREATEFAILED )
+    {
+        printf( "create process snapshot handle failed\n" );
+        return -1;
+    }
+    if ( pcount > 1 ) // sofruner is running (the one process is this process itself)
+    {
+        HideShell();
+        PyRun_SimpleString( "from tkinter import messagebox\n"
+                            "messagebox.showinfo( \"sofruner INFO\" , \"sofruner已在运行\" )" );
+        Py_Finalize();
+        return 1;
+    }
+    
     PyModule_AppendPath( "../py" );
     PyImport_Module( sofruner );
     if ( !Py_sofruner )
