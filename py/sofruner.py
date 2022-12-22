@@ -1,9 +1,13 @@
 import _thread
 import configparser
 import os
+import threading
 import tkinter
 import tkinter.messagebox
 from tkinter.filedialog import askdirectory
+
+import pystray
+from PIL import Image
 
 
 def gui_main():
@@ -15,6 +19,26 @@ def gui_main():
     # this window isn't resizable
 
     # setup root widget
+
+    def quit_window( icon: pystray.Icon ):
+        icon.stop()
+        root.destroy()
+
+    def show_window():
+        root.deiconify()
+    
+    def window_on_exit():
+        root.withdraw()
+
+    # functions for pystray
+
+    tray_menu = ( pystray.MenuItem( "显示面板" , show_window , default = True ) , pystray.Menu.SEPARATOR , pystray.MenuItem( "退出" , quit_window ) )
+    tray_icon = Image.open( "../icon/sofrunerico.ico" )
+    tray = pystray.Icon( "sofruner" , tray_icon , "sofruner" , tray_menu )
+    # define system tray
+
+    root.protocol( "WM_DELETE_WINDOW" , window_on_exit )
+    # redefine "close window" button
 
     Target_Path = tkinter.StringVar()
     Target_EXE = tkinter.StringVar()
@@ -51,20 +75,22 @@ def gui_main():
             tkinter.messagebox.showerror( "sofruner FATAL" , "可执行文件 " + exe_to_run + " 未找到" )
             return
 
-        def run( path , target ):
-            os.system( target )
+#       def run( target ):
+#           os.system( target )
 
         # normally, os.system don't need path input because it had already been contained in target
         # but not idea what happens but when I delete path, this program won't start a thread successfully
         # therefore: path isn't deleted, but it's also not used
 
+        # but now this problem has been solved: f**k it tuple I didn't realized it
+
         try:
-            _thread.start_new_thread( run , ( Target_Path.get() , "\"" + exe_to_run + "\"" ) )
+            _thread.start_new_thread( os.system , ( "\"" + exe_to_run + "\"" , ) )
             # start a new thread to contain and run target exe
         except:
             tkinter.messagebox.showerror( "sofruner FATAL" , "start thread failed" )
         
-    
+
     def change_saveprofil_option():
         if Checkbutton_Var.get() == 1:
             set_value = "1"
@@ -114,6 +140,7 @@ def gui_main():
     Target_Run_Button.grid( row = 2 , column = 3 )
     # setup button grid
 
+    threading.Thread( target = tray.run , daemon = True ).start()
     root.mainloop()
 
 if __name__ == "__main__":
