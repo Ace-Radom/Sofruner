@@ -67,11 +67,18 @@ if(${BUILD_RELEASE})
     install(
         FILES
             ${PROJECT_SOURCE_DIR}/config/config.ini
-            ${PROJECT_SOURCE_DIR}/config/icon.gif
         DESTINATION
             ${CMAKE_INSTALL_PREFIX}/config
     )
     # install config files
+
+    install(
+        FILES
+            ${PROJECT_SOURCE_DIR}/icon/icon.gif
+            ${PROJECT_SOURCE_DIR}/icon/sofrunerico.ico
+        DESTINATION
+            ${CMAKE_INSTALL_PREFIX}/icon
+    )
 
     install(
         FILES
