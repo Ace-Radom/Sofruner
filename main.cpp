@@ -33,7 +33,6 @@ void HideShell(){
 
 int main( int argc , char** argv ){
 
-    printf( "[sofruner shell runtime] start initializing python api\n" );
     Py_Initialize();
     if ( !Py_IsInitialized() )
     {
@@ -41,10 +40,8 @@ int main( int argc , char** argv ){
         system( "pause" );
         return -1;
     }
-    printf( "[sofruner shell runtime] initializing python api success\n" );
 
     PyModule_AppendPath( "../py" );
-    printf( "[sofruner shell runtime] trying to import python module sofruner -> cxx\n" );
     PyImport_Module( sofruner );
     if ( !Py_sofruner )
     {
@@ -52,9 +49,7 @@ int main( int argc , char** argv ){
         system( "pause" );
         return -1;
     }
-    printf( "[sofruner shell runtime] import python module sofruner success\n" );
 
-    printf( "[sofruner shell runtime] trying to import python function gui_main from python module sofruner -> cxx\n" );
     PyImport_Function( Py_sofruner , gui_main );
     if ( !PyFunction_Callable( PyFunc_gui_main ) )
     {
@@ -62,10 +57,6 @@ int main( int argc , char** argv ){
         system( "pause" );
         return -1;
     }
-    printf( "[sofruner shell runtime] import python function gui_main from python module sofruner success\n" );
-
-    printf( "[sofruner shell runtime] all perparations clear, no error occurs\n" );
-    printf( "[sofruner shell runtime] calling sofruner gui...\n" );
 
     HideShell();
     // hide shell
