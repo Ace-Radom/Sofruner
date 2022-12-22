@@ -31,7 +31,10 @@ if(NOT Python3_FOUND)
 endif()
 include_directories(${Python3_INCLUDE_DIRS})
 
+include_directories(include)
+
 add_executable(sofruner
+    ${PROJECT_SOURCE_DIR}/src/find_process.cpp
     ${PROJECT_SOURCE_DIR}/main.cpp
     ${PROJECT_SOURCE_DIR}/icon/sofrunerico.rc
 )
