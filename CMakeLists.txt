@@ -50,7 +50,7 @@ if(${BUILD_RELEASE})
     install(
         FILES
             ${PROJECT_SOURCE_DIR}/release/sofruner.exe
-            ${Python3_RUNTIME_LIBRARY_DIRS}/python310.dll
+            ${Python3_RUNTIME_LIBRARY}
         DESTINATION
             ${CMAKE_INSTALL_PREFIX}/bin
     )
