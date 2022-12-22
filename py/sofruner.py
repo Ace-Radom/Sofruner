@@ -106,7 +106,7 @@ def gui_main():
     Icon_Label = tkinter.Label( image = icon )
     Icon_Label.grid( row = 0 , column = 2 , columnspan = 2 , rowspan = 2 , sticky = 'w' + 'e' + 'n' + 's' , padx = 5 , pady = 5 )
 
-    Target_Path_Button = tkinter.Button( root , text = "打开目录" , bg = "lightblue" , command = select_path )
+    Target_Path_Button = tkinter.Button( root , text = "选择目录" , bg = "lightblue" , command = select_path )
     Target_Run_Button = tkinter.Button( root , text = "启动游戏" , bg = "lightblue" , command = run_target )
     # create button
     
