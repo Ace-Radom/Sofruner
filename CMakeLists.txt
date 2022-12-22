@@ -3,6 +3,7 @@ project(sofruner VERSION 1.0)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -mwindows)
 
 set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/release_package)
 

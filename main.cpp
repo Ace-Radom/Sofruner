@@ -8,29 +8,12 @@
     PyRun_SimpleString( "sys.path.append( '" path "')" );       \
 }
 
-#if PY_MAJOR_VERSION < 3
-
-    #define PyImport_Module( module ) PyObject* Py_##module = PyImport_Import( PyString_FromString( #module ) )
-
-#else
-
-    #define PyImport_Module( module ) PyObject* Py_##module = PyImport_Import( PyUnicode_FromString( #module ) )
-
-#endif
+#define PyImport_Module( module ) PyObject* Py_##module = PyImport_Import( PyUnicode_FromString( #module ) )
 
 #define PyImport_Function( module , function ) PyObject* PyFunc_##function = PyObject_GetAttrString( module , #function )
 #define PyFunction_Callable( function )                         \
         ( function && PyCallable_Check( function ) ) ? true     \
                                                      : false
-
-void HideShell(){
-    HWND hwnd = GetForegroundWindow();
-    if ( hwnd )
-    {
-        ShowWindow( hwnd , SW_HIDE );
-    }
-    return;
-}
 
 int main( int argc , char** argv ){
 
@@ -50,7 +33,6 @@ int main( int argc , char** argv ){
     }
     if ( pcount > 1 ) // sofruner is running (the one process is this process itself)
     {
-        HideShell();
         PyRun_SimpleString( "from tkinter import messagebox\n"
                             "messagebox.showinfo( \"sofruner INFO\" , \"sofruner已在运行\" )" );
         Py_Finalize();
@@ -73,9 +55,6 @@ int main( int argc , char** argv ){
         system( "pause" );
         return -1;
     }
-
-    HideShell();
-    // hide shell
 
     PyObject_CallObject( PyFunc_gui_main , NULL );
 
