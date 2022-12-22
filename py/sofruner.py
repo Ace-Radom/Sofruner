@@ -1,6 +1,7 @@
 import _thread
 import configparser
 import os
+import subprocess
 import threading
 import tkinter
 import tkinter.messagebox
@@ -84,8 +85,11 @@ def gui_main():
 
         # but now this problem has been solved: f**k it tuple I didn't realized it
 
+        def run( target ):
+            subprocess.run( target , shell = True )
+
         try:
-            _thread.start_new_thread( os.system , ( "\"" + exe_to_run + "\"" , ) )
+            _thread.start_new_thread( run , ( "\"" + exe_to_run + "\"" , ) )
             # start a new thread to contain and run target exe
         except:
             tkinter.messagebox.showerror( "sofruner FATAL" , "start thread failed" )
