@@ -145,6 +145,8 @@ def gui_main():
     # setup button grid
 
     threading.Thread( target = tray.run , daemon = True ).start()
+    root.wm_attributes( "-topmost" , True )
+    root.wm_attributes( "-topmost" , False )
     root.mainloop()
 
 if __name__ == "__main__":
