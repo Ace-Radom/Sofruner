@@ -33,6 +33,7 @@ include_directories(${Python3_INCLUDE_DIRS})
 
 add_executable(sofruner
     ${PROJECT_SOURCE_DIR}/main.cpp
+    ${PROJECT_SOURCE_DIR}/icon/sofrunerico.rc
 )
 
 add_custom_command(
