@@ -13,7 +13,7 @@ from PIL import Image
 
 def gui_main():
     root = tkinter.Tk()
-    root.title( "sofruner gui v1.0" )             # set window title
+    root.title( "sofruner gui v1.4" )             # set window title
     root.geometry( '390x80' )                     # set window size
     root.iconbitmap( "../icon/sofrunerico.ico" )  # set window ico
     root.resizable( width = False , height = False )
