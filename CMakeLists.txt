@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
-project(sofruner VERSION 1.4)
+project(sofruner VERSION 1.4.2)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -mwindows)
+#set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-mwindows -static-libgcc -static-libstdc++")
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-mwindows")
 
 set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/release_package)
 
