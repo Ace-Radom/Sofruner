@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sofruner-ng", "Sofruner-ng\Sofruner-ng.csproj", "{E0528F52-E4AF-4756-BEBB-842BB3FA395F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sofruner-ng", "Sofruner-ng\Sofruner-ng.csproj", "{2BF18C8E-4FB2-40C6-9BF9-0A95EEFE7A29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E0528F52-E4AF-4756-BEBB-842BB3FA395F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E0528F52-E4AF-4756-BEBB-842BB3FA395F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E0528F52-E4AF-4756-BEBB-842BB3FA395F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E0528F52-E4AF-4756-BEBB-842BB3FA395F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BF18C8E-4FB2-40C6-9BF9-0A95EEFE7A29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BF18C8E-4FB2-40C6-9BF9-0A95EEFE7A29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BF18C8E-4FB2-40C6-9BF9-0A95EEFE7A29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BF18C8E-4FB2-40C6-9BF9-0A95EEFE7A29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {6601A6A2-45A6-4CF6-A312-8503DB810AE5}
+		SolutionGuid = {69919877-AD10-4BDB-A4C8-D673A228962F}
 	EndGlobalSection
 EndGlobal
